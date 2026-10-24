@@ -111,18 +111,6 @@ function openCity(n){
    a.textContent=onAndroid?'Відкрити саме цей допис у Facebook ↗':'Відкрити допис у Facebook ↗';
    a.style.cssText='display:block;margin:7px 0;color:#1257c5;text-decoration:underline';
    box.append(a);
-   if(onAndroid){
-     const copy=document.createElement('button');copy.type='button';
-     copy.textContent='📋 Скопіювати пряме посилання';
-     copy.style.cssText='display:block;margin:12px 0 6px;padding:11px 13px;min-height:44px;border:1px solid #1257c5;border-radius:8px;background:#edf4ff;color:#1257c5;font-weight:600;cursor:pointer';
-     copy.addEventListener('click',async()=>{
-       try{await navigator.clipboard.writeText(direct);copy.textContent='✓ Скопійовано! Вставте адресу в Chrome';}
-       catch(e){const t=document.createElement('textarea');t.value=direct;t.style.cssText='width:100%;min-height:65px';box.append(t);t.select();copy.textContent='Виділіть та скопіюйте адресу нижче';}
-     });
-     box.append(copy);
-     const note=document.createElement('p');note.textContent='Якщо Facebook відкрив головну сторінку, скопіюйте посилання та вставте його в адресний рядок Chrome.';
-     note.style.cssText='font-size:12px;color:#53677e;line-height:1.4';box.append(note);
-   }
  }else if(p.hashtags&&p.hashtags.length){
    const title=document.createElement('p');title.textContent='Хештеги Facebook:';box.append(title);
    p.hashtags.forEach(tag=>{const a=document.createElement('a');a.href='https://www.facebook.com/hashtag/'+encodeURIComponent(tag.slice(1));a.target='_blank';a.rel='noopener noreferrer';a.textContent=tag;a.style.cssText='display:block;margin:7px 0;color:#1257c5;text-decoration:underline';box.append(a)});
